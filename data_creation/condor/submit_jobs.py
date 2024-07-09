@@ -50,8 +50,8 @@ def main():
 
     parser.add_argument(
         "--configuration",
-        help="configuration file",
-        default="config.gun",
+        help="configuration file <without extension>",
+        default="config",
     )
 
     parser.add_argument(
@@ -60,22 +60,21 @@ def main():
         default="gun",
     )
     parser.add_argument(
-        "--numEvent",
+        "--numEvents",
         help="number of events in a file",
         default="100",
     )
 
     args = parser.parse_args()
 
-    outdir = os.path.abspath(args.outdir)
-
     njobs = int(args.njobs)
     queue = args.queue
     config = args.configuration
     sample = args.sample
     scr = args.script
-    nev = args.numEvent
+    nev = args.numEvents
 
+    outdir = os.path.abspath(args.outdir) + "/" + config + "/"
     homedir = os.path.abspath(os.getcwd()) + "/../"
 
     os.system("mkdir -p {}".format(outdir))
@@ -104,8 +103,8 @@ def main():
     for job in range(njobs):
 
         seed = str(job + 1)
-        basename = "output_IDEA_DIGI_gun_" + seed + ".root" 
-        outputFile = outdir + "/" + basename
+        basename = "output_IDEA_DIGI_" + sample + "_" + seed + ".root" 
+        outputFile = outdir + basename
 
         # print outdir, basename, outputFile
         if not outputFile in list_of_outfiles:
