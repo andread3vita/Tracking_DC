@@ -14,7 +14,7 @@ python submit_jobs.py  --njobs 30 \
                              --configuration $CONFIG \
                              --script run_sequence_global.sh \
                              --sample gun \
-                             --numEvents 10
+                             --numEvents 5
 
 
 

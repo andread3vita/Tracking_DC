@@ -2,70 +2,70 @@
     executable    = run_sequence_global.sh
 
     # here you specify where to put .log, .out and .err files
-    output                = std/condor.$(ClusterId).$(ProcId).out
-    error                 = std/condor.$(ClusterId).$(ProcId).err
-    log                   = std/condor.$(ClusterId).log
+    output                = /afs/cern.ch/user/a/adevita/public/workDir/temp/std/condor.$(ClusterId).$(ProcId).out
+    error                 = /afs/cern.ch/user/a/adevita/public/workDir/temp/std/condor.$(ClusterId).$(ProcId).err
+    log                   = /afs/cern.ch/user/a/adevita/public/workDir/temp/std/condor.$(ClusterId).log
     
 
     +AccountingGroup = "group_u_CMST3.all"
     +JobFlavour    = "espresso"
-    arguments="1 gun muons_eta0017_mom50 10"
+    arguments="1 gun muons_eta0017_mom50 5"
 queue
-arguments="2 gun muons_eta0017_mom50 10"
+arguments="2 gun muons_eta0017_mom50 5"
 queue
-arguments="3 gun muons_eta0017_mom50 10"
+arguments="3 gun muons_eta0017_mom50 5"
 queue
-arguments="4 gun muons_eta0017_mom50 10"
+arguments="4 gun muons_eta0017_mom50 5"
 queue
-arguments="5 gun muons_eta0017_mom50 10"
+arguments="5 gun muons_eta0017_mom50 5"
 queue
-arguments="6 gun muons_eta0017_mom50 10"
+arguments="6 gun muons_eta0017_mom50 5"
 queue
-arguments="7 gun muons_eta0017_mom50 10"
+arguments="7 gun muons_eta0017_mom50 5"
 queue
-arguments="8 gun muons_eta0017_mom50 10"
+arguments="8 gun muons_eta0017_mom50 5"
 queue
-arguments="9 gun muons_eta0017_mom50 10"
+arguments="9 gun muons_eta0017_mom50 5"
 queue
-arguments="10 gun muons_eta0017_mom50 10"
+arguments="10 gun muons_eta0017_mom50 5"
 queue
-arguments="11 gun muons_eta0017_mom50 10"
+arguments="11 gun muons_eta0017_mom50 5"
 queue
-arguments="12 gun muons_eta0017_mom50 10"
+arguments="12 gun muons_eta0017_mom50 5"
 queue
-arguments="13 gun muons_eta0017_mom50 10"
+arguments="13 gun muons_eta0017_mom50 5"
 queue
-arguments="14 gun muons_eta0017_mom50 10"
+arguments="14 gun muons_eta0017_mom50 5"
 queue
-arguments="15 gun muons_eta0017_mom50 10"
+arguments="15 gun muons_eta0017_mom50 5"
 queue
-arguments="16 gun muons_eta0017_mom50 10"
+arguments="16 gun muons_eta0017_mom50 5"
 queue
-arguments="17 gun muons_eta0017_mom50 10"
+arguments="17 gun muons_eta0017_mom50 5"
 queue
-arguments="18 gun muons_eta0017_mom50 10"
+arguments="18 gun muons_eta0017_mom50 5"
 queue
-arguments="19 gun muons_eta0017_mom50 10"
+arguments="19 gun muons_eta0017_mom50 5"
 queue
-arguments="20 gun muons_eta0017_mom50 10"
+arguments="20 gun muons_eta0017_mom50 5"
 queue
-arguments="21 gun muons_eta0017_mom50 10"
+arguments="21 gun muons_eta0017_mom50 5"
 queue
-arguments="22 gun muons_eta0017_mom50 10"
+arguments="22 gun muons_eta0017_mom50 5"
 queue
-arguments="23 gun muons_eta0017_mom50 10"
+arguments="23 gun muons_eta0017_mom50 5"
 queue
-arguments="24 gun muons_eta0017_mom50 10"
+arguments="24 gun muons_eta0017_mom50 5"
 queue
-arguments="25 gun muons_eta0017_mom50 10"
+arguments="25 gun muons_eta0017_mom50 5"
 queue
-arguments="26 gun muons_eta0017_mom50 10"
+arguments="26 gun muons_eta0017_mom50 5"
 queue
-arguments="27 gun muons_eta0017_mom50 10"
+arguments="27 gun muons_eta0017_mom50 5"
 queue
-arguments="28 gun muons_eta0017_mom50 10"
+arguments="28 gun muons_eta0017_mom50 5"
 queue
-arguments="29 gun muons_eta0017_mom50 10"
+arguments="29 gun muons_eta0017_mom50 5"
 queue
-arguments="30 gun muons_eta0017_mom50 10"
+arguments="30 gun muons_eta0017_mom50 5"
 queue
