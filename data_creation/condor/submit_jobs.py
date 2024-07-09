@@ -90,9 +90,9 @@ def main():
     executable    = {}
 
     # here you specify where to put .log, .out and .err files
-    output                = std/condor.$(ClusterId).$(ProcId).out
-    error                 = std/condor.$(ClusterId).$(ProcId).err
-    log                   = std/condor.$(ClusterId).log
+    output                = /afs/cern.ch/user/a/adevita/public/workDir/temp/std/condor.$(ClusterId).$(ProcId).out
+    error                 = /afs/cern.ch/user/a/adevita/public/workDir/temp/std/condor.$(ClusterId).$(ProcId).err
+    log                   = /afs/cern.ch/user/a/adevita/public/workDir/temp/std/condor.$(ClusterId).log
     
 
     +AccountingGroup = "group_u_CMST3.all"
