@@ -1,0 +1,5 @@
+npart_range 1,1
+eta_range 0.88,0.88
+mom_range 50,50
+drmax 0
+pid_list 13

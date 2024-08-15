@@ -10,20 +10,18 @@
 # env
 # df -h
 
-OUTDIR=/eos/experiment/fcc/ee/idea_tracking
+OUTDIR=/afs/cern.ch/user/a/adevita/public/workDir/test/dataset
 PFDIR=/afs/cern.ch/user/a/adevita/public/workDir/Tracking_DC/data_creation/
-WORKDIR=/afs/cern.ch/user/a/adevita/public/workDir/temp/
+WORKDIR=/afs/cern.ch/user/a/adevita/public/workDir/test/
 
 NUM=${1}     # random seed
 SAMPLE=${2}  # sample
 CONFIG=${3}  # configuration file
 NEV=${4}     # number of events
 
-
 FULLOUTDIR="${OUTDIR}/${CONFIG}/"
 PATH_TO_K4GEO="/afs/cern.ch/user/a/adevita/public/workDir/k4geo/"
 K4RECTRACKER_dir="/afs/cern.ch/user/a/adevita/public/workDir/k4RecTracker/"
-# SOURCEFILE_K4RECTRACKER="/afs/cern.ch/user/a/adevita/public/workDir/k4RecTracker/setup.sh"
 
 sleep 5
 echo ""
@@ -38,7 +36,10 @@ set -- "${ORIG_PARAMS[@]}"
 echo ""
 
 cd $WORKDIR
-TEMP_OUT="${FULLOUTDIR}out_gun/out_${SAMPLE}_${NUM}.hepmc"
+mkdir -p "${FULLOUTDIR}out_${SAMPLE}/"
+TEMP_OUT="${FULLOUTDIR}out_${SAMPLE}/out_${SAMPLE}_${NUM}.hepmc"
+
+
 if [[ "${SAMPLE}" == "gun" ]] 
 then 
       
@@ -48,10 +49,20 @@ then
       echo "Workdir = ${WORKDIR}"
       echo "ConfigFile = ${CONFIG}.gun"
 
+      cp -r $PFDIR/gun/gun_random_angle.cpp .
+      cp -r $PFDIR/gun/CMakeLists.txt .
+      cp -r $PFDIR/gun/gun.cpp .
+
       cp -r "$PFDIR/gun/configurations/${CONFIG}.gun" .
       echo "" >> $CONFIG.gun
       echo "nevents ${NEV}" >> $CONFIG.gun
 
+      mkdir -p build install
+      cd build
+      cmake .. -DCMAKE_INSTALL_PREFIX=../install
+      make install -j 8
+
+      cd $WORKDIR
       ./build/gun ${CONFIG}.gun $TEMP_OUT $NUM
 
 fi 
@@ -65,11 +76,11 @@ if [[ "${SAMPLE}" == "Zcard" ]]
       echo "Workdir = ${WORKDIR}"
       echo "ConfigFile = ${CONFIG}.cmd"
 
-      cp $PFDIR/Pythia_generation/${SAMPLE}.cmd card_${NUM}.cmd
-      echo "Random:seed=${NUM}" >> card_${NUM}.cmd
+      cp $PFDIR/Pythia_generation/${SAMPLE}.cmd card.cmd
+      echo "Random:seed=${NUM}" >> card.cmd
       cp $PFDIR/Pythia_generation/pythia.py ./
 
-      k4run $PFDIR/Pythia_generation/pythia.py -n $NEV --Dumper.Filename $TEMP_OUT --Pythia8.PythiaInterface.pythiacard card_${NUM}.cmd
+      k4run $PFDIR/Pythia_generation/pythia.py -n $NEV --Dumper.Filename $TEMP_OUT --Pythia8.PythiaInterface.pythiacard card.cmd
 fi
 
 sleep 5
@@ -82,6 +93,7 @@ echo "ddsim output = ${DDSIM_OUT}"
 echo ""
 
 echo "Running ddsim"
+mkdir -p "${FULLOUTDIR}out_sim_edm4hep/"
 ddsim --compactFile $PATH_TO_K4GEO/FCCee/IDEA/compact/IDEA_o1_v02/IDEA_o1_v02.xml \
       --outputFile $DDSIM_OUT \
       --inputFiles $TEMP_OUT \
@@ -99,41 +111,35 @@ sleep 5
 echo ""
 echo ""
 echo "Running tracker"
+mkdir -p "${FULLOUTDIR}eval/"
 cp $K4RECTRACKER_dir/runIDEAtracker.py ./
-k4run runIDEAtracker_eval.py --inputFile "${FULLOUTDIR}/output_IDEA_DIGI_${SAMPLE}_${NUM}.root" --outputFile "${FULLOUTDIR}eval/output_IDEA_tracking_${SAMPLE}_${NUM}.root"
-
-
+k4run runIDEAtracker.py --inputFile "${FULLOUTDIR}/output_IDEA_DIGI_${SAMPLE}_${NUM}.root" --outputFile "${FULLOUTDIR}eval/output_IDEA_tracking_${SAMPLE}_${NUM}.root"
 
 sleep 5
 echo ""
 echo ""
 echo "Running efficiency computation"
-cp $K4RECTRACKER_dir/runIDEAefficiency.py ./
-k4run runIDEAefficiency.py --inputFile "${FULLOUTDIR}eval/output_IDEA_tracking_${SAMPLE}_${NUM}.root" --outputFile "${FULLOUTDIR}eff/eff_IDEA_tracking_${SAMPLE}_${NUM}.root"
+mkdir -p "${FULLOUTDIR}eff/"
+if [[ "${SAMPLE}" == "Zcard" ]]
+      then 
 
-# sleep 5
-# echo ""
-# echo ""
-# echo "Running efficiency computation"
-# if [[ "${SAMPLE}" == "Zcard" ]]
-#       then 
-
-#       cp $K4RECTRACKER_dir/runIDEAtracking_eff_pythia.py ./
-#       k4run runIDEAtracking_eff_pythia.py --inputFile "${FULLOUTDIR}eval/output_IDEA_tracking_${SAMPLE}_${NUM}.root" --outputFile "${FULLOUTDIR}eff/eff_IDEA_tracking_${SAMPLE}_${NUM}.root"
+      cp $K4RECTRACKER_dir/runIDEAtracking_eff_pythia.py ./
+      k4run runIDEAtracking_eff_pythia.py --inputFile "${FULLOUTDIR}eval/output_IDEA_tracking_${SAMPLE}_${NUM}.root" --outputFile "${FULLOUTDIR}eff/eff_IDEA_tracking_${SAMPLE}_${NUM}.root"
 
 
-# fi
+fi
 
-# if [[ "${SAMPLE}" == "gun" ]] 
-#       then 
+if [[ "${SAMPLE}" == "gun" ]] 
+      then 
 
-#       cp $K4RECTRACKER_dir/runIDEAtracking_eff_gun.py ./
-#       k4run runIDEAtracking_eff_gun.py --inputFile "${FULLOUTDIR}eval/output_IDEA_tracking_${SAMPLE}_${NUM}.root" --outputFile "${FULLOUTDIR}eff/eff_IDEA_tracking_${SAMPLE}_${NUM}.root"
+      cp $K4RECTRACKER_dir/runIDEAtracking_eff_gun.py ./
+      k4run runIDEAtracking_eff_gun.py --inputFile "${FULLOUTDIR}eval/output_IDEA_tracking_${SAMPLE}_${NUM}.root" --outputFile "${FULLOUTDIR}eff/eff_IDEA_tracking_${SAMPLE}_${NUM}.root"
 
-# fi
+fi
+
 
 # ##### CLEAN
-rm "${DDSIM_OUT}"
-rm "${TEMP_OUT}"
-rm "${FULLOUTDIR}/output_IDEA_DIGI_${SAMPLE}_${NUM}.root"
-rm "${FULLOUTDIR}eval/output_IDEA_tracking_${SAMPLE}_${NUM}.root"
+# rm "${DDSIM_OUT}"
+# rm "${TEMP_OUT}"
+# rm "${FULLOUTDIR}/output_IDEA_DIGI_${SAMPLE}_${NUM}.root"
+# rm "${FULLOUTDIR}eval/output_IDEA_tracking_${SAMPLE}_${NUM}.root"

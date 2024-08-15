@@ -1,0 +1,111 @@
+# here goes your shell script
+    executable    = run_sequence_global.sh
+
+    # here you specify where to put .log, .out and .err files
+    output                = std/condor.$(ClusterId).$(ProcId).out
+    error                 = std/condor.$(ClusterId).$(ProcId).err
+    log                   = std/condor.$(ClusterId).log
+    
+
+    +AccountingGroup = "group_u_CMST3.all"
+    +JobFlavour    = "espresso"
+    arguments="51 gun muons_eta0880_mom3 100"
+queue
+arguments="52 gun muons_eta0880_mom3 100"
+queue
+arguments="53 gun muons_eta0880_mom3 100"
+queue
+arguments="54 gun muons_eta0880_mom3 100"
+queue
+arguments="55 gun muons_eta0880_mom3 100"
+queue
+arguments="56 gun muons_eta0880_mom3 100"
+queue
+arguments="57 gun muons_eta0880_mom3 100"
+queue
+arguments="58 gun muons_eta0880_mom3 100"
+queue
+arguments="59 gun muons_eta0880_mom3 100"
+queue
+arguments="60 gun muons_eta0880_mom3 100"
+queue
+arguments="61 gun muons_eta0880_mom3 100"
+queue
+arguments="62 gun muons_eta0880_mom3 100"
+queue
+arguments="63 gun muons_eta0880_mom3 100"
+queue
+arguments="64 gun muons_eta0880_mom3 100"
+queue
+arguments="65 gun muons_eta0880_mom3 100"
+queue
+arguments="66 gun muons_eta0880_mom3 100"
+queue
+arguments="67 gun muons_eta0880_mom3 100"
+queue
+arguments="68 gun muons_eta0880_mom3 100"
+queue
+arguments="69 gun muons_eta0880_mom3 100"
+queue
+arguments="70 gun muons_eta0880_mom3 100"
+queue
+arguments="71 gun muons_eta0880_mom3 100"
+queue
+arguments="72 gun muons_eta0880_mom3 100"
+queue
+arguments="73 gun muons_eta0880_mom3 100"
+queue
+arguments="74 gun muons_eta0880_mom3 100"
+queue
+arguments="75 gun muons_eta0880_mom3 100"
+queue
+arguments="76 gun muons_eta0880_mom3 100"
+queue
+arguments="77 gun muons_eta0880_mom3 100"
+queue
+arguments="78 gun muons_eta0880_mom3 100"
+queue
+arguments="79 gun muons_eta0880_mom3 100"
+queue
+arguments="80 gun muons_eta0880_mom3 100"
+queue
+arguments="81 gun muons_eta0880_mom3 100"
+queue
+arguments="82 gun muons_eta0880_mom3 100"
+queue
+arguments="83 gun muons_eta0880_mom3 100"
+queue
+arguments="84 gun muons_eta0880_mom3 100"
+queue
+arguments="85 gun muons_eta0880_mom3 100"
+queue
+arguments="86 gun muons_eta0880_mom3 100"
+queue
+arguments="87 gun muons_eta0880_mom3 100"
+queue
+arguments="88 gun muons_eta0880_mom3 100"
+queue
+arguments="89 gun muons_eta0880_mom3 100"
+queue
+arguments="90 gun muons_eta0880_mom3 100"
+queue
+arguments="91 gun muons_eta0880_mom3 100"
+queue
+arguments="92 gun muons_eta0880_mom3 100"
+queue
+arguments="93 gun muons_eta0880_mom3 100"
+queue
+arguments="94 gun muons_eta0880_mom3 100"
+queue
+arguments="95 gun muons_eta0880_mom3 100"
+queue
+arguments="96 gun muons_eta0880_mom3 100"
+queue
+arguments="97 gun muons_eta0880_mom3 100"
+queue
+arguments="98 gun muons_eta0880_mom3 100"
+queue
+arguments="99 gun muons_eta0880_mom3 100"
+queue
+arguments="100 gun muons_eta0880_mom3 100"
+queue

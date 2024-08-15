@@ -74,7 +74,7 @@ def main():
     scr = args.script
     nev = args.numEvents
 
-    outdir = os.path.abspath(args.outdir) + "/" + config + "/"
+    outdir = os.path.abspath(args.outdir) + "/" + config + "/eff/"
     homedir = os.path.abspath(os.getcwd()) + "/../"
 
     os.system("mkdir -p {}".format(outdir))
@@ -90,12 +90,12 @@ def main():
     executable    = {}
 
     # here you specify where to put .log, .out and .err files
-    output                = /afs/cern.ch/user/a/adevita/public/workDir/temp/std/condor.$(ClusterId).$(ProcId).out
-    error                 = /afs/cern.ch/user/a/adevita/public/workDir/temp/std/condor.$(ClusterId).$(ProcId).err
-    log                   = /afs/cern.ch/user/a/adevita/public/workDir/temp/std/condor.$(ClusterId).log
+    output                = std/condor.$(ClusterId).$(ProcId).out
+    error                 = std/condor.$(ClusterId).$(ProcId).err
+    log                   = std/condor.$(ClusterId).log
     
 
-    +AccountingGroup = "group_u_CMST3.all"
+    +AccountingGroup = "group_u_FCC.local_gen"
     +JobFlavour    = "{}"
     """.format(scr, queue)
 
@@ -103,8 +103,10 @@ def main():
     for job in range(njobs):
 
         seed = str(job + 1)
-        basename = "output_IDEA_DIGI_" + sample + "_" + seed + ".root" 
+        
+        basename = "eff_IDEA_tracking_" + sample + "_" + seed + ".root" 
         outputFile = outdir + basename
+
 
         # print outdir, basename, outputFile
         if not outputFile in list_of_outfiles:
@@ -115,20 +117,21 @@ def main():
 
             cmdfile += 'arguments="{}"\n'.format(argts)
             cmdfile += "queue\n"
-
             cmd = "rm -rf job*; ./{} {}".format(scr, argts)
-            if jobCount == 1:
-                print("")
-                print(cmd)
 
-    with open("condor_gun.sub", "w") as f:
+    #         if jobCount == 1:
+    #             print("")
+    #             print(cmd)
+
+    gun_condor = "condor_subs/{}.sub".format(config)
+    with open(gun_condor, "w") as f:
         f.write(cmdfile)
 
     ### submitting jobs
     if jobCount > 0:
         print("")
         print("[Submitting {} jobs] ... ".format(jobCount))
-        os.system("condor_submit condor_gun.sub")
+        os.system("condor_submit {}".format(gun_condor))
 
 
 # _______________________________________________________________________________________

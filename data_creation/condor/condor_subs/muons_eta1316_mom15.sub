@@ -1,0 +1,31 @@
+# here goes your shell script
+    executable    = run_sequence_global.sh
+
+    # here you specify where to put .log, .out and .err files
+    output                = std/condor.$(ClusterId).$(ProcId).out
+    error                 = std/condor.$(ClusterId).$(ProcId).err
+    log                   = std/condor.$(ClusterId).log
+    
+
+    +AccountingGroup = "group_u_CMST3.all"
+    +JobFlavour    = "espresso"
+    arguments="1 gun muons_eta1316_mom15 10"
+queue
+arguments="2 gun muons_eta1316_mom15 10"
+queue
+arguments="3 gun muons_eta1316_mom15 10"
+queue
+arguments="4 gun muons_eta1316_mom15 10"
+queue
+arguments="5 gun muons_eta1316_mom15 10"
+queue
+arguments="6 gun muons_eta1316_mom15 10"
+queue
+arguments="7 gun muons_eta1316_mom15 10"
+queue
+arguments="8 gun muons_eta1316_mom15 10"
+queue
+arguments="9 gun muons_eta1316_mom15 10"
+queue
+arguments="10 gun muons_eta1316_mom15 10"
+queue

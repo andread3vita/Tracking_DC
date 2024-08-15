@@ -61,10 +61,7 @@ double get_mass_G4(int pid) {
 
 void generate_event(WriterAscii& writer, const std::vector<int>& pid_list, 
                     const std::vector<int>& npart_range, const std::vector<float>& eta_range, 
-                    const std::vector<float>& mom_range, float drmax) {
-    // Create a random number generator
-    std::random_device rd;
-    std::mt19937 gen(rd());
+                    const std::vector<float>& mom_range, float drmax,std::mt19937& gen) {
 
     // Generate random eta
     std::uniform_real_distribution<> eta_dist(eta_range[0], eta_range[1]);
@@ -145,11 +142,16 @@ void generate_event(WriterAscii& writer, const std::vector<int>& pid_list,
 
 
 int main(int argc, char** argv) {
+
     // Check that the correct number of parameters were passed
-    if (argc < 2) {
-        std::cerr << "Usage: " << argv[0] << " <config file>\n";
+    if (argc < 4) {
+        std::cerr << "Usage: " << argv[0] << " <config file>" << "<outFile>"<< "<seed>\n";
         return 1;
     }
+
+    int seed = std::stoi(argv[3]);
+    std::mt19937 gen(seed);
+
 
     // Open the configuration file
     std::ifstream configFile(argv[1]);
@@ -243,7 +245,7 @@ int main(int argc, char** argv) {
 
     // Generate and write n events
     for (int i = 0; i < nevents; i++) {
-        generate_event(writer, pid_list, npart_range, eta_range, mom_range, drmax);
+        generate_event(writer, pid_list, npart_range, eta_range, mom_range, drmax,gen);
     }
 
     writer.close();  // This will add the "HepMC::Asciiv3-END_EVENT_LISTING" line
