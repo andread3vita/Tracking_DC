@@ -92,8 +92,7 @@ def main():
                         # verify=True,       
                         input_names=["input"],
                         output_names=["output"], 
-                         dynamic_axes={
-                            "input": [0]}) 
+                        dynamic_axes={"input": [0]}) 
 
 
 
@@ -135,10 +134,12 @@ def main():
         ]
         # only needed for the GNN baseline
         # callbacks.append(FreezeEFDeepSet())
+        gpus = [int(i) for i in args.gpus.split(",")]
+        print(gpus)
         trainer = L.Trainer(
             callbacks=callbacks,
             accelerator="gpu",
-            devices=args.gpus,
+            devices=gpus,
             default_root_dir=args.model_prefix,
             logger=wandb_logger,
             # max_epochs=5,
@@ -148,7 +149,6 @@ def main():
             limit_val_batches=5,
         )
         args.local_rank = trainer.global_rank
-        print("here")
         train_loader, val_loader, data_config, train_input_names = train_load(args)
 
         trainer.fit(

@@ -1,0 +1,597 @@
+{
+    "os": "Linux-3.10.0-1160.119.1.el7.x86_64-x86_64-with-glibc2.29",
+    "python": "3.8.10",
+    "heartbeatAt": "2025-06-06T13:17:13.404305",
+    "startedAt": "2025-06-06T13:17:12.636154",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "--data-train",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_100.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_101.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_102.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_103.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_104.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_105.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_106.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_107.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_108.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_109.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_110.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_111.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_112.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_113.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_114.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_115.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_116.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_117.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_119.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_120.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_121.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_122.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_123.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_124.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_125.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_126.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_127.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_128.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_129.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_130.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_131.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_132.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_133.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_134.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_135.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_136.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_137.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_138.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_139.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_140.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_141.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_142.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_143.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_144.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_145.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_146.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_147.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_148.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_149.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_150.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_151.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_152.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_153.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_154.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_155.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_156.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_157.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_158.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_159.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_160.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_161.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_162.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_163.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_164.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_165.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_166.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_167.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_168.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_169.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_17.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_170.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_171.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_172.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_173.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_174.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_175.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_176.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_177.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_178.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_179.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_18.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_180.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_181.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_182.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_183.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_184.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_185.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_186.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_187.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_188.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_189.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_19.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_190.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_191.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_192.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_193.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_194.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_195.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_196.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_197.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_198.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_199.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_20.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_200.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_21.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_22.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_23.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_24.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_25.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_26.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_27.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_28.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_29.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_30.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_31.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_32.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_33.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_34.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_35.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_36.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_37.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_38.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_39.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_40.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_41.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_42.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_43.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_44.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_45.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_46.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_47.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_48.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_49.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_50.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_51.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_52.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_53.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_54.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_55.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_56.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_57.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_58.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_60.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_61.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_62.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_63.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_64.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_65.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_66.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_67.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_68.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_69.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_70.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_71.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_72.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_73.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_74.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_75.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_76.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_77.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_78.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_79.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_80.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_81.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_82.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_83.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_84.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_85.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_86.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_87.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_88.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_89.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_90.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_91.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_92.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_93.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_94.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_95.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_96.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_97.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_98.root",
+        "/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/Zcard/Zcard_graphs_99.root",
+        "--data-config",
+        "config_files/config_tracking_global_vector.yaml",
+        "-clust",
+        "-clust_dim",
+        "3",
+        "--network-config",
+        "src/models/wrapper/example_model_tracking_gatr_v.py",
+        "--model-prefix",
+        "/afs/cern.ch/user/a/adevita/public/workDir/training_results/06062025",
+        "--num-workers",
+        "0",
+        "--gpus",
+        "0,1,2,3",
+        "--batch-size",
+        "4",
+        "--start-lr",
+        "1e-3",
+        "--num-epochs",
+        "100",
+        "--optimizer",
+        "ranger",
+        "--fetch-step",
+        "0.04",
+        "--condensation",
+        "--log-wandb",
+        "--wandb-displayname",
+        "GATr_IDEAv3_LR",
+        "--wandb-projectname",
+        "DC_tracking",
+        "--wandb-entity",
+        "ml4hep",
+        "--frac_cluster_loss",
+        "0",
+        "--qmin",
+        "3",
+        "--use-average-cc-pos",
+        "0.99"
+    ],
+    "state": "running",
+    "program": "-m src.train_lightning",
+    "git": {
+        "remote": "git@github.com:andread3vita/Tracking_DC.git",
+        "commit": "f6aaa3058eeeaebc7125545ea6e5071e74642231"
+    },
+    "email": null,
+    "root": "/afs/cern.ch/user/a/adevita/public/workDir/Tracking_DC",
+    "host": "fcc-gpu-04v2.cern.ch",
+    "username": "adevita",
+    "executable": "/usr/bin/python",
+    "cpu_count": 64,
+    "cpu_count_logical": 64,
+    "cpu_freq": {
+        "current": 3000.022999999996,
+        "min": 0.0,
+        "max": 0.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3000.023,
+            "min": 0.0,
+            "max": 0.0
+        }
+    ],
+    "disk": {
+        "total": 0.0625,
+        "used": 1.1444091796875e-05
+    },
+    "gpu": "NVIDIA A100-PCIE-40GB",
+    "gpu_count": 4,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA A100-PCIE-40GB",
+            "memory_total": 42949672960
+        },
+        {
+            "name": "NVIDIA A100-PCIE-40GB",
+            "memory_total": 42949672960
+        },
+        {
+            "name": "NVIDIA A100-PCIE-40GB",
+            "memory_total": 42949672960
+        },
+        {
+            "name": "NVIDIA A100-PCIE-40GB",
+            "memory_total": 42949672960
+        }
+    ],
+    "memory": {
+        "total": 461.15125274658203
+    }
+}

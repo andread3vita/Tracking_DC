@@ -3,9 +3,9 @@ import sys
 
 # from gatr import GATr, SelfAttentionConfig, MLPConfig
 
-from src.gatr_v111.nets.gatr import GATr
-from src.gatr_v111.layers.attention.config import SelfAttentionConfig
-from src.gatr_v111.layers.mlp.config import MLPConfig
+# from src.gatr_v111.nets.gatr import GATr
+# from src.gatr_v111.layers.attention.config import SelfAttentionConfig
+# from src.gatr_v111.layers.mlp.config import MLPConfig
 from src.gatr_v111.interface import (
     embed_point,
     extract_scalar,
@@ -36,8 +36,8 @@ from src.layers.batch_operations import obtain_batch_numbers
 from xformers.ops.fmha import BlockDiagonalMask
 import os
 import wandb
-from src.gatr_v111.primitives.linear import _compute_pin_equi_linear_basis
-from src.gatr_v111.primitives.attention import _build_dist_basis
+# from src.gatr_v111.primitives.linear import _compute_pin_equi_linear_basis
+# from src.gatr_v111.primitives.attention import _build_dist_basis
 
 
 class ExampleWrapper(L.LightningModule):  # nn.Module L.LightningModule
@@ -52,14 +52,14 @@ class ExampleWrapper(L.LightningModule):  # nn.Module L.LightningModule
         self.input_dim = 3
         self.output_dim = 4
         self.args = args
-        self.basis_gp = None
-        self.basis_outer = None
-        self.pin_basis = None
-        self.basis_q = None
-        self.basis_k = None
+        # self.basis_gp = None
+        # self.basis_outer = None
+        # self.pin_basis = None
+        # self.basis_q = None
+        # self.basis_k = None
         self.ScaledGooeyBatchNorm2_1 = nn.BatchNorm1d(self.input_dim, momentum=0.1)
 
-        self.load_basis()
+        # self.load_basis()
         self.gatr = GATr(
             in_mv_channels=1,
             out_mv_channels=1,
@@ -70,39 +70,39 @@ class ExampleWrapper(L.LightningModule):  # nn.Module L.LightningModule
             num_blocks=blocks,
             attention=SelfAttentionConfig(),
             mlp=MLPConfig(),
-            basis_gp=self.basis_gp,
-            basis_outer=self.basis_outer,
-            basis_pin=self.pin_basis,
-            basis_q=self.basis_q,
-            basis_k=self.basis_k,
-            basis_gp_mask = self.basis_gp_mask, 
+            # basis_gp=self.basis_gp,
+            # basis_outer=self.basis_outer,
+            # basis_pin=self.pin_basis,
+            # basis_q=self.basis_q,
+            # basis_k=self.basis_k,
+            # basis_gp_mask = self.basis_gp_mask, 
         )
 
         self.clustering = nn.Linear(16, self.output_dim - 1, bias=False)
         self.beta = nn.Linear(16, 1)
         self.vector_like_data = True
 
-    def load_basis(self):
+    # def load_basis(self):
 
-        filename = "/afs/cern.ch/user/m/mgarciam/.local/lib/python3.8/site-packages/gatr/primitives/data/geometric_product.pt"
-        sparse_basis = torch.load(filename).to(torch.float32)
-        basis = sparse_basis.to_dense()
-        self.basis_gp = basis #.to(device="cuda")
-        filename = "/afs/cern.ch/user/m/mgarciam/.local/lib/python3.8/site-packages/gatr/primitives/data/outer_product.pt"
-        sparse_basis_outer = torch.load(filename).to(torch.float32)
-        sparse_basis_outer = sparse_basis_outer.to_dense()
-        self.basis_outer = sparse_basis_outer #.to(device="cuda")
+    #     filename = "/afs/cern.ch/user/m/mgarciam/.local/lib/python3.8/site-packages/gatr/primitives/data/geometric_product.pt"
+    #     sparse_basis = torch.load(filename).to(torch.float32)
+    #     basis = sparse_basis.to_dense()
+    #     self.basis_gp = basis #.to(device="cuda")
+    #     filename = "/afs/cern.ch/user/m/mgarciam/.local/lib/python3.8/site-packages/gatr/primitives/data/outer_product.pt"
+    #     sparse_basis_outer = torch.load(filename).to(torch.float32)
+    #     sparse_basis_outer = sparse_basis_outer.to_dense()
+    #     self.basis_outer = sparse_basis_outer #.to(device="cuda")
 
-        self.pin_basis = _compute_pin_equi_linear_basis(
-            device=self.basis_gp.device, dtype=basis.dtype
-        )
-        self.basis_q, self.basis_k = _build_dist_basis(
-            device=self.basis_gp.device, dtype=basis.dtype
-        )
-        mask = compute_inner_product_mask(self.basis_gp, device=self.basis_gp.device)
-        columns = torch.range(0,15).to(self.basis_gp.device)
-        colums_take = columns[mask.bool()]
-        self.basis_gp_mask = colums_take
+    #     self.pin_basis = _compute_pin_equi_linear_basis(
+    #         device=self.basis_gp.device, dtype=basis.dtype
+    #     )
+    #     self.basis_q, self.basis_k = _build_dist_basis(
+    #         device=self.basis_gp.device, dtype=basis.dtype
+    #     )
+    #     mask = compute_inner_product_mask(self.basis_gp, device=self.basis_gp.device)
+    #     columns = torch.range(0,15).to(self.basis_gp.device)
+    #     colums_take = columns[mask.bool()]
+    #     self.basis_gp_mask = colums_take
 
     def forward(self,  input):  #
         # print("forward")

@@ -151,7 +151,7 @@ def to_filelist(args, mode="train"):
 
     filelist = sum(file_dict.values(), [])
     assert len(filelist) == len(set(filelist))
-    print(args.local_rank, len(filelist))
+    # print(args.local_rank, len(filelist))
     return file_dict, filelist
 
 

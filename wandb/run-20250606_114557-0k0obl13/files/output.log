@@ -1,0 +1,52 @@
+USING TRAINING MODE
+[1, 2, 3, 4]
+Traceback (most recent call last):
+  File "/usr/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/afs/cern.ch/user/a/adevita/public/workDir/Tracking_DC/src/train_lightning.py", line 182, in <module>
+    main()
+  File "/afs/cern.ch/user/a/adevita/public/workDir/Tracking_DC/src/train_lightning.py", line 139, in main
+    trainer = L.Trainer(
+  File "/home/adevita/.local/lib/python3.8/site-packages/lightning/pytorch/utilities/argparse.py", line 69, in insert_env_defaults
+    return fn(self, **kwargs)
+  File "/home/adevita/.local/lib/python3.8/site-packages/lightning/pytorch/trainer/trainer.py", line 393, in __init__
+    self._accelerator_connector = _AcceleratorConnector(
+  File "/home/adevita/.local/lib/python3.8/site-packages/lightning/pytorch/trainer/connectors/accelerator_connector.py", line 157, in __init__
+    self._set_parallel_devices_and_init_accelerator()
+  File "/home/adevita/.local/lib/python3.8/site-packages/lightning/pytorch/trainer/connectors/accelerator_connector.py", line 391, in _set_parallel_devices_and_init_accelerator
+    self._devices_flag = accelerator_cls.parse_devices(self._devices_flag)
+  File "/home/adevita/.local/lib/python3.8/site-packages/lightning/pytorch/accelerators/cuda.py", line 80, in parse_devices
+    return _parse_gpu_ids(devices, include_cuda=True)
+  File "/home/adevita/.local/lib/python3.8/site-packages/lightning/fabric/utilities/device_parser.py", line 104, in _parse_gpu_ids
+    return _sanitize_gpu_ids(gpus, include_cuda=include_cuda, include_mps=include_mps)
+  File "/home/adevita/.local/lib/python3.8/site-packages/lightning/fabric/utilities/device_parser.py", line 136, in _sanitize_gpu_ids
+    raise MisconfigurationException(
+lightning.fabric.utilities.exceptions.MisconfigurationException: You requested gpu: [1, 2, 3, 4]
+ But your machine only has: [0, 1, 2, 3]
+Traceback (most recent call last):
+  File "/usr/lib/python3.8/runpy.py", line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/afs/cern.ch/user/a/adevita/public/workDir/Tracking_DC/src/train_lightning.py", line 182, in <module>
+    main()
+  File "/afs/cern.ch/user/a/adevita/public/workDir/Tracking_DC/src/train_lightning.py", line 139, in main
+    trainer = L.Trainer(
+  File "/home/adevita/.local/lib/python3.8/site-packages/lightning/pytorch/utilities/argparse.py", line 69, in insert_env_defaults
+    return fn(self, **kwargs)
+  File "/home/adevita/.local/lib/python3.8/site-packages/lightning/pytorch/trainer/trainer.py", line 393, in __init__
+    self._accelerator_connector = _AcceleratorConnector(
+  File "/home/adevita/.local/lib/python3.8/site-packages/lightning/pytorch/trainer/connectors/accelerator_connector.py", line 157, in __init__
+    self._set_parallel_devices_and_init_accelerator()
+  File "/home/adevita/.local/lib/python3.8/site-packages/lightning/pytorch/trainer/connectors/accelerator_connector.py", line 391, in _set_parallel_devices_and_init_accelerator
+    self._devices_flag = accelerator_cls.parse_devices(self._devices_flag)
+  File "/home/adevita/.local/lib/python3.8/site-packages/lightning/pytorch/accelerators/cuda.py", line 80, in parse_devices
+    return _parse_gpu_ids(devices, include_cuda=True)
+  File "/home/adevita/.local/lib/python3.8/site-packages/lightning/fabric/utilities/device_parser.py", line 104, in _parse_gpu_ids
+    return _sanitize_gpu_ids(gpus, include_cuda=include_cuda, include_mps=include_mps)
+  File "/home/adevita/.local/lib/python3.8/site-packages/lightning/fabric/utilities/device_parser.py", line 136, in _sanitize_gpu_ids
+    raise MisconfigurationException(
+lightning.fabric.utilities.exceptions.MisconfigurationException: You requested gpu: [1, 2, 3, 4]
+ But your machine only has: [0, 1, 2, 3]
