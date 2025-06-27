@@ -1,7 +1,7 @@
 from os import path
 import sys
 
-# from gatr import GATr, SelfAttentionConfig, MLPConfig
+from gatr import GATr, SelfAttentionConfig, MLPConfig
 
 # from src.gatr_v111.nets.gatr import GATr
 # from src.gatr_v111.layers.attention.config import SelfAttentionConfig
@@ -13,7 +13,7 @@ from src.gatr_v111.interface import (
     embed_scalar,
     embed_translation,
 )
-from src.gatr_v111.primitives.invariants import   compute_inner_product_mask
+# from src.gatr_v111.primitives.invariants import   compute_inner_product_mask
 import torch
 import torch.nn as nn
 from src.logger.plotting_tools import PlotCoordinates
@@ -225,6 +225,7 @@ class ExampleWrapper(L.LightningModule):  # nn.Module L.LightningModule
         )
         if self.trainer.is_global_zero:
             log_losses_wandb_tracking(True, batch_idx, 0, losses, loss, val=True)
+        
         if self.trainer.is_global_zero and self.args.predict:
             df_batch = evaluate_efficiency_tracks(
                 batch_g,

@@ -24,8 +24,8 @@ FULLOUTDIR=${OUTDIR}/${TYPE}/${CONFIG}
 
 mkdir -p $WORKDIR
 
-PATH_TO_K4GEO="/eos/user/a/adevita/saveSpace/k4geo"
-K4RECTRACKER_dir="/eos/user/a/adevita/saveSpace/k4RecTracker"
+PATH_TO_K4GEO="/eos/user/a/adevita/public/saveSpace/k4geo/"
+K4RECTRACKER_dir="/eos/user/a/adevita/public/saveSpace/k4RecTracker"
 
 sleep 5
 echo ""

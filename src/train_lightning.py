@@ -12,6 +12,7 @@ import math
 import torch
 import wandb
 import warnings
+import wandb
 
 # warnings.filterwarnings("ignore")
 # from torch import nn
@@ -19,9 +20,17 @@ import warnings
 # from torchvision import transforms
 from torchvision.datasets import MNIST
 from torch.utils.data import DataLoader
-import lightning as L
 from src.utils.parser_args import parser
+
+
+import lightning as L
 from lightning.pytorch.loggers import WandbLogger
+from lightning.pytorch.callbacks import (
+    TQDMProgressBar,
+    ModelCheckpoint,
+    LearningRateMonitor,
+)
+from lightning.pytorch.profilers import AdvancedProfiler
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "../"))
 from src.utils.train_utils import (
@@ -29,23 +38,16 @@ from src.utils.train_utils import (
     test_load,
 )
 from src.utils.import_tools import import_module
-import wandb
-
-from lightning.pytorch.callbacks import (
-    TQDMProgressBar,
-    ModelCheckpoint,
-    LearningRateMonitor,
-)
-from lightning.pytorch.profilers import AdvancedProfiler
 from src.utils.train_utils import get_samples_steps_per_epoch, model_setup, get_gpu_dev
 from src.models.Build_graphs import FreezeEFDeepSet
-import os
 # os.environ["CUDA_VISIBLE_DEVICES"] = ""
 # os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
 # os.environ["TORCH_USE_CUDA_DSA"] = "1"
 # os.environ["TORCH_LOGS"] = "onnx_diagnostics"
 # os.environ["TORCHLIB_EXPERIMENTAL_PREFER_TRACING"] = "1
 
+
+print("Using PyTorch version:", torch.__version__)
 
 def main():
 
@@ -64,6 +66,7 @@ def main():
     else:
         print("No GPUs flag provided - Setting GPUs to [0]")
         gpus = [0]
+        
     wandb_logger = WandbLogger(
         project=args.wandb_projectname,
         entity=args.wandb_entity,
@@ -71,7 +74,7 @@ def main():
     )
     if args.export_onnx:
         print("exporting to onnx")
-        filepath = args.model_prefix + "model_multivector_input_011124_v2.onnx"
+        filepath = args.model_prefix + "model_multivector_input_10062025_v3.onnx"
         # args1 = (torch.randn((10, 3)), torch.randn((10, 1)), torch.randn((10, 3)))
         torch._dynamo.config.verbose = True
         if args.load_model_weights is not None:
@@ -95,13 +98,11 @@ def main():
                         dynamic_axes={"input": [0]}) 
 
 
-
-        
-        # export_options = torch.onnx.ExportOptions(dynamic_shapes=True)
-        # onnx_program = torch.onnx.dynamo_export(
-        #     model, args1, export_options=export_options
-        # )
-        # onnx_program.save(filepath)
+        export_options = torch.onnx.ExportOptions(dynamic_shapes=True)
+        onnx_program = torch.onnx.dynamo_export(
+            model, args1, export_options=export_options
+        )
+        onnx_program.save(filepath)
        
 
     elif training_mode:

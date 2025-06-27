@@ -1,0 +1,104 @@
+/usr/local/lib/python3.8/dist-packages/lightning/pytorch/callbacks/model_checkpoint.py:652: Checkpoint directory /eos/experiment/fcc/users/a/adevita/training_results/26062025 exists and is not empty.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+
+  | Name                    | Type        | Params | Mode
+----------------------------------------------------------------
+0 | ScaledGooeyBatchNorm2_1 | BatchNorm1d | 6      | train
+1 | gatr                    | GATr        | 924 K  | train
+2 | clustering              | Linear      | 48     | train
+3 | beta                    | Linear      | 17     | train
+----------------------------------------------------------------
+924 K     Trainable params
+0         Non-trainable params
+924 K     Total params
+3.698     Total estimated model params size (MB)
+Sanity Checking: |                                                                                                     | 0/? [00:00<?, ?it/s]=== Restarting DataIter val_rank0, seed=None ===
+/usr/local/lib/python3.8/dist-packages/lightning/pytorch/trainer/connectors/data_connector.py:424: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=15` in the `DataLoader` to improve performance.
+/usr/local/lib/python3.8/dist-packages/dgl/base.py:45: DGLWarning: Recommend creating graphs by `dgl.graph(data)` instead of `dgl.DGLGraph(data)`.
+  return warnings.warn(message, category=category, stacklevel=1)
+Sanity Checking DataLoader 0:   0%|                                                                                    | 0/2 [00:00<?, ?it/s]/eos/experiment/fcc/users/a/adevita/training_results/26062025/figures/input_coords_0_eval_0_0.html
+/eos/experiment/fcc/users/a/adevita/training_results/26062025/figures/final_clustering_0_eval_0_0.html
+/afs/cern.ch/user/a/adevita/public/workDir/Tracking_DC/src/layers/losses.py:44: UserWarning:
+
+torch.range is deprecated and will be removed in a future release because its behavior is inconsistent with Python's range builtin. Instead, use torch.arange, which produces values in [start, end).
+
+/usr/local/lib/python3.8/dist-packages/dgl/base.py:45: DGLWarning:
+
+Recommend creating graphs by `dgl.graph(data)` instead of `dgl.DGLGraph(data)`.
+/eos/experiment/fcc/users/a/adevita/training_results/26062025/figures/input_coords_0_eval_0_0.html
+/eos/experiment/fcc/users/a/adevita/training_results/26062025/figures/final_clustering_0_eval_0_0.html
+
+/afs/cern.ch/user/a/adevita/public/workDir/Tracking_DC/src/layers/losses.py:44: UserWarning:
+
+torch.range is deprecated and will be removed in a future release because its behavior is inconsistent with Python's range builtin. Instead, use torch.arange, which produces values in [start, end).
+=== Restarting DataIter train_rank0, seed=None ===                                                                                           
+
+/usr/local/lib/python3.8/dist-packages/lightning/pytorch/trainer/connectors/data_connector.py:424: PossibleUserWarning:
+
+The 'train_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=15` in the `DataLoader` to improve performance.
+
+/usr/local/lib/python3.8/dist-packages/dgl/base.py:45: DGLWarning:
+
+Recommend creating graphs by `dgl.graph(data)` instead of `dgl.DGLGraph(data)`.
+Epoch 0: |                                                                                                             | 0/? [00:00<?, ?it/s]/eos/experiment/fcc/users/a/adevita/training_results/26062025/figures/input_coords_0_0_0.html
+/eos/experiment/fcc/users/a/adevita/training_results/26062025/figures/final_clustering_0_0_0.html
+
+/afs/cern.ch/user/a/adevita/public/workDir/Tracking_DC/src/layers/losses.py:44: UserWarning:
+
+torch.range is deprecated and will be removed in a future release because its behavior is inconsistent with Python's range builtin. Instead, use torch.arange, which produces values in [start, end).
+
+/usr/local/lib/python3.8/dist-packages/torch/autograd/__init__.py:266: UserWarning:
+
+Grad strides do not match bucket view strides. This may indicate grad was not created according to the gradient layout contract, or that the param's strides changed since DDP was constructed.  This is not an error, but may impair performance.
+grad.sizes() = [1, 16, 9], strides() = [1, 9, 1]
+bucket_view.sizes() = [1, 16, 9], strides() = [144, 9, 1] (Triggered internally at ../torch/csrc/distributed/c10d/reducer.cpp:322.)
+
+/usr/local/lib/python3.8/dist-packages/dgl/base.py:45: DGLWarning:
+
+Recommend creating graphs by `dgl.graph(data)` instead of `dgl.DGLGraph(data)`.
+Epoch 0: |                                                                                      | 1000/? [12:34<00:00,  1.33it/s, v_num=nmak]/eos/experiment/fcc/users/a/adevita/training_results/26062025/figures/input_coords_0_1000_0.html
+/eos/experiment/fcc/users/a/adevita/training_results/26062025/figures/final_clustering_0_1000_0.html
+
+/afs/cern.ch/user/a/adevita/public/workDir/Tracking_DC/src/layers/losses.py:44: UserWarning:
+
+torch.range is deprecated and will be removed in a future release because its behavior is inconsistent with Python's range builtin. Instead, use torch.arange, which produces values in [start, end).
+
+/usr/local/lib/python3.8/dist-packages/dgl/base.py:45: DGLWarning:
+
+Recommend creating graphs by `dgl.graph(data)` instead of `dgl.DGLGraph(data)`.
+There are nans in beta! L198 2743
+There are nans in beta! L198 3623
+There are nans in beta! L198 5460
+There are nans in beta! L198 5421
+There are nans in beta! L198 5484
+There are nans in beta! L198 8498
+Epoch 0: |                                                                                      | 1010/? [12:40<00:00,  1.33it/s, v_num=nmak]There are nans in beta! L198 3778
+There are nans in beta! L198 2635
+There are nans in beta! L198 3459
+There are nans in beta! L198 4423
+There are nans in beta! L198 3916
+There are nans in beta! L198 2394
+There are nans in beta! L198 3131
+There are nans in beta! L198 5579
+There are nans in beta! L198 5879
+There are nans in beta! L198 3310
+Epoch 0: |                                                                                      | 1020/? [12:47<00:00,  1.33it/s, v_num=nmak]There are nans in beta! L198 3675
+There are nans in beta! L198 3418
+There are nans in beta! L198 8192
+There are nans in beta! L198 7006
+There are nans in beta! L198 3485
+There are nans in beta! L198 4770
+There are nans in beta! L198 3956
+There are nans in beta! L198 3980
+There are nans in beta! L198 4347
+There are nans in beta! L198 3829
+Epoch 0: |                                                                                      | 1030/? [12:53<00:00,  1.33it/s, v_num=nmak]There are nans in beta! L198 5540
+There are nans in beta! L198 5373
+There are nans in beta! L198 6391
+There are nans in beta! L198 6289
+There are nans in beta! L198 5218
+There are nans in beta! L198 3785
+
+/usr/local/lib/python3.8/dist-packages/lightning/pytorch/trainer/call.py:54: UserWarning:
+
+Detected KeyboardInterrupt, attempting graceful shutdown...

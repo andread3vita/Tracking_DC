@@ -9,7 +9,7 @@ NFILE=${5}      # number of files
 CURRPATH=$(pwd)
 ORIG_PARAMS=("$@")
 set --
-source /cvmfs/sw-nightlies.hsf.org/key4hep/setup.sh -r 2025-05-15
+source /cvmfs/sw-nightlies.hsf.org/key4hep/setup.sh -r 2025-06-05
 set -- "${ORIG_PARAMS[@]}"
 
 outdir=""
