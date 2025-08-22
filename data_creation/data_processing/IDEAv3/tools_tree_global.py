@@ -482,6 +482,24 @@ def store_hit_col_CDC(
         left_hit_global_position = local_to_global(left_hit_local_position, x_prime, y_prime, z_prime, wirePos)
         right_hit_global_position = local_to_global(right_hit_local_position, x_prime, y_prime, z_prime, wirePos)
         
+        # Check d_z
+        if abs(d_z) < 1e-12 or np.isnan(d_z) or np.isinf(d_z):
+            raise ValueError(f"d_z invalid! value={d_z}, wire_stereo_angle={wire_stereo_angle}")
+
+        # norm_z_prime
+        if norm_z_prime < 1e-12 or np.isnan(norm_z_prime) or np.isinf(norm_z_prime):
+            raise ValueError(f"z_prime norm invalid! norm_z_prime={norm_z_prime}")
+
+        # norm_x_prime
+        if norm_x_prime < 1e-12 or np.isnan(norm_x_prime) or np.isinf(norm_x_prime):
+            raise ValueError(f"x_prime norm invalid! norm_x_prime={norm_x_prime}")
+
+        # norm_y_prime
+        if norm_y_prime < 1e-12 or np.isnan(norm_y_prime) or np.isinf(norm_y_prime):
+            raise ValueError(f"y_prime norm invalid! norm_y_prime={norm_y_prime}")
+
+
+        
         produced_by_secondary = dc_hit.isProducedBySecondary()
         dic["leftPosition_x"].push_back(left_hit_global_position[0])
         dic["leftPosition_y"].push_back(left_hit_global_position[1])
@@ -528,7 +546,7 @@ def store_hit_col_CDC(
         dic["phi"].push_back(phi)
         dic["stereo"].push_back(stereo)
 
-        mcParticle = dc_hit.getMCParticle()
+        mcParticle = dc_hit.getParticle()
         # print(dir(mcParticle))
         # this is to check that we are considering the correct particle
         # pdg_particle = mcParticle.getPDG()
@@ -631,7 +649,7 @@ def store_hit_col_VTX_SIW(
             dic["rightPosition_z"].push_back(0)
             dic["cluster_count"].push_back(0)
             dic["produced_by_secondary"].push_back(1.0 * produced_by_secondary)
-            mcParticle = dc_hit.getMCParticle()
+            mcParticle = dc_hit.getParticle()
             # # pdg_particle = mcParticle.getPDG()
             object_id = mcParticle.getObjectID()
             genlink0 = object_id.index

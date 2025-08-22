@@ -12,7 +12,6 @@ import math
 import torch
 import wandb
 import warnings
-import wandb
 
 # warnings.filterwarnings("ignore")
 # from torch import nn
@@ -52,9 +51,22 @@ print("Using PyTorch version:", torch.__version__)
 def main():
 
     args = parser.parse_args()
+    
+    missing_files = 0
+    for i in args.data_train:
+        if not os.path.isfile(i):
+            print("Missing File!", i)
+            missing_files += 1
+
+    if missing_files > 0:
+        print(f"{missing_files} missing files. Quit.")
+        sys.exit(1)   
+        
     args = get_samples_steps_per_epoch(args)
     args.local_rank = 0
     training_mode = not args.predict
+    
+    
     if training_mode:
         train_loader, val_loader, data_config, train_input_names = train_load(args)
     else:
@@ -72,40 +84,9 @@ def main():
         entity=args.wandb_entity,
         name=args.wandb_displayname,
     )
-    if args.export_onnx:
-        print("exporting to onnx")
-        filepath = args.model_prefix + "model_multivector_input_10062025_v3.onnx"
-        # args1 = (torch.randn((10, 3)), torch.randn((10, 1)), torch.randn((10, 3)))
-        torch._dynamo.config.verbose = True
-        if args.load_model_weights is not None:
-            from src.models.Gatr_v_onnx import ExampleWrapper
-
-            print("adding weights")
-            model = ExampleWrapper.load_from_checkpoint(
-                args.load_model_weights, args=args, dev=0
-            )
-        model.eval()
-        model.ScaledGooeyBatchNorm2_1.momentum = 0
-        args1 = torch.randn((10, 7))
-        torch.onnx.export(model, 
-                        args1,
-                        filepath, 
-                        dynamo=True, 
-                        # report=True, 
-                        # verify=True,       
-                        input_names=["input"],
-                        output_names=["output"], 
-                        dynamic_axes={"input": [0]}) 
-
-
-        export_options = torch.onnx.ExportOptions(dynamic_shapes=True)
-        onnx_program = torch.onnx.dynamo_export(
-            model, args1, export_options=export_options
-        )
-        onnx_program.save(filepath)
        
 
-    elif training_mode:
+    if training_mode:
         print("USING TRAINING MODE")
         # if args.load_model_weights is not None:
         #     # from src.models.Gatr_v import ExampleWrapper
@@ -136,7 +117,7 @@ def main():
         # only needed for the GNN baseline
         # callbacks.append(FreezeEFDeepSet())
         gpus = [int(i) for i in args.gpus.split(",")]
-        print(gpus)
+        print("Using GPUs:", gpus)
         trainer = L.Trainer(
             callbacks=callbacks,
             accelerator="gpu",

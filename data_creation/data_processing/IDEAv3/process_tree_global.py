@@ -26,7 +26,8 @@ store_tau = sys.argv[3]
 metadata = reader.get("metadata")[0]
 
 out_root = TFile(output_file, "RECREATE")
-t = TTree("events", "pf tree lar")
+out_root.cd()    
+t = TTree("events", "tracking tree")
 event_number, n_hit, n_part, dic, t = initialize(t, store_tau)
 
 
@@ -43,6 +44,8 @@ for event in reader.get("events"):
         gen_part_coll,
         index_taus,
     ) = gen_particles_find(event, debug, store_tau)
+    
+    
     # if event_numbers == 8:
     clear_dic(dic)
     n_part[0] = 0
@@ -65,10 +68,10 @@ for event in reader.get("events"):
     )
     unique_MCS = merge_list_MCS(list_of_MCs1, list_of_MCs2, store_tau, index_taus)
     n_part, dic = read_mc_collection(event, dic, n_part, debug, unique_MCS)
-
     event_number[0] += 1
     t.Fill()
 
 
-t.SetDirectory(out_root)
-t.Write()
+t.Write("", ROOT.TObject.kOverwrite)
+out_root.Write("", ROOT.TObject.kOverwrite)
+out_root.Close()

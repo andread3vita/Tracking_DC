@@ -64,7 +64,9 @@ class EquiLayerNorm(nn.Module):
         outputs_mv = equi_layer_norm(
             self.gp_mask,multivectors, channel_dim=self.mv_channel_dim, epsilon=self.epsilon
         )
-        normalized_shape = scalars.shape[-1:]
+        
+        normalized_shape = [64]
         outputs_s = torch.nn.functional.layer_norm(scalars, normalized_shape=normalized_shape)
+   
    
         return outputs_mv, outputs_s

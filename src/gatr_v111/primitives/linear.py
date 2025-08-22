@@ -111,29 +111,54 @@ def _compute_grade_involution(device=torch.device("cpu"), dtype=torch.float32) -
 NUM_PIN_LINEAR_BASIS_ELEMENTS = len(_compute_pin_equi_linear_basis())
 
 
-def equi_linear(basis, x: torch.Tensor, coeffs: torch.Tensor) -> torch.Tensor:
-    """Pin-equivariant linear map f(x) = sum_{a,j} coeffs_a W^a_ij x_j.
+# def equi_linear(basis, x: torch.Tensor, coeffs: torch.Tensor) -> torch.Tensor:
+#     """Pin-equivariant linear map f(x) = sum_{a,j} coeffs_a W^a_ij x_j.
 
-    The W^a are seven pre-defined basis elements.
+#     The W^a are seven pre-defined basis elements.
 
-    Parameters
-    ----------
-    x : torch.Tensor with shape (..., in_channels, 16)
-        Input multivector. Batch dimensions must be broadcastable between x and coeffs.
-    coeffs : torch.Tensor with shape (out_channels, in_channels, 7)
-        Coefficients for the 59 basis elements. Batch dimensions must be broadcastable between x and
-        coeffs.
+#     Parameters
+#     ----------
+#     x : torch.Tensor with shape (..., in_channels, 16)
+#         Input multivector. Batch dimensions must be broadcastable between x and coeffs.
+#     coeffs : torch.Tensor with shape (out_channels, in_channels, 7)
+#         Coefficients for the 59 basis elements. Batch dimensions must be broadcastable between x and
+#         coeffs.
 
-    Returns
-    -------
-    outputs : torch.Tensor with shape (..., 16)
-        Result. Batch dimensions are result of broadcasting between x and coeffs.
-    """
-    # basis = _compute_pin_equi_linear_basis(device=x.device, dtype=x.dtype)
-    # return custom_einsum("y x a, a i j, ... x j -> ... y i", coeffs, basis, x, path=[0, 1, 0, 1])
-    c2 = torch.einsum("y x a, a i j ->  y x i j ", coeffs, basis)
-    a2 = torch.einsum("y x i j , l x j -> l y i", c2, x)
-    return a2
+#     Returns
+#     -------
+#     outputs : torch.Tensor with shape (..., 16)
+#         Result. Batch dimensions are result of broadcasting between x and coeffs.
+#     """
+#     # basis = _compute_pin_equi_linear_basis(device=x.device, dtype=x.dtype)
+#     # return custom_einsum("y x a, a i j, ... x j -> ... y i", coeffs, basis, x, path=[0, 1, 0, 1])
+#     c2 = torch.einsum("y x a, a i j ->  y x i j ", coeffs, basis)
+#     a2 = torch.einsum("y x i j , l x j -> l y i", c2, x)
+#     return a2
+
+
+def equi_linear(basis: torch.Tensor, x: torch.Tensor, coeffs: torch.Tensor) -> torch.Tensor:
+    # coeffs: (y, x, a)
+    # basis: (a, i, j)
+    # x:     (l, x, j)
+
+    y, x_dim, a = coeffs.shape
+    a_, i, j = basis.shape
+    l = x.shape[0]
+    assert a == a_
+
+    # coeffs @ basis → (y, x, i, j)
+    coeffs_flat = coeffs.reshape(-1, a)         # (y*x, a)
+    basis_flat = basis.reshape(a, -1)           # (a, i*j)
+    c2_flat = torch.matmul(coeffs_flat, basis_flat)  # (y*x, i*j)
+    c2 = c2_flat.view(y, x_dim, i, j)           # (y, x, i, j)
+    c2 = c2.permute(0, 1, 3, 2)                 # (y, x, j, i)
+
+    # x: (l, x, j)
+    # c2: (y, x, j, i)
+    # Ziel: (l, y, i) ← über x, j summieren
+
+    result = torch.einsum("lxj,yxji->lyi", x, c2)  # (l, y, i)
+    return result
 
 def grade_project(x: torch.Tensor) -> torch.Tensor:
     """Projects an input tensor to the individual grades.

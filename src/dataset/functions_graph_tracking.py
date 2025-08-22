@@ -248,6 +248,8 @@ def create_graph_tracking_global(output, get_vtx=False, vector=False, tau=False,
         ) = result
         # print("hit_type_one_hot previous to removing loopers", hit_type_one_hot.shape, hit_particle_link.shape)
         if not overlay:
+            
+            # Remove loopers from the list of hits and the list of particles
             mask_not_loopers, mask_particles = remove_loopers(
                 hit_particle_link, y_data_graph, features_hits[:, 3:6], cluster_id
             )
@@ -260,7 +262,10 @@ def create_graph_tracking_global(output, get_vtx=False, vector=False, tau=False,
             features_hits = features_hits[mask_not_loopers]
             hit_type = hit_type[mask_not_loopers]
             y_data_graph = y_data_graph[mask_particles]
+            
+            # Compute the cluster id after removing loopers
             cluster_id, unique_list_particles = find_cluster_id(hit_particle_link)
+            
         else:
             mask_not_loopers, mask_particles = remove_loopers_overlay(
                 hit_particle_link, y_data_graph, features_hits[:, 3:6], cluster_id
@@ -488,9 +493,11 @@ def remove_loopers(hit_particle_link, y, coord, cluster_id):
     diff_x = torch.abs(max_x - min_x)
     diff_z = torch.abs(max_z - min_z)
     diff_y = torch.abs(max_y - min_y)
+    
     mask_x = diff_x > 1600
     mask_z = diff_z > 2800
-    mask_y = diff_y > 2800
+    mask_y = diff_y > 1600. ####### 1600?
+    
     mask_p = mask_x + mask_z + mask_y
     # remove particles with a couple hits
     number_of_hits = get_number_hits(cluster_id)
@@ -507,6 +514,7 @@ def remove_loopers(hit_particle_link, y, coord, cluster_id):
             mask = mask1 + mask
     else:
         mask = torch.tensor(np.full((len(hit_particle_link)), False, dtype=bool))
+        
     list_p = unique_p_numbers
     if len(list_remove) > 0:
         mask_particles = np.full((len(list_p)), False, dtype=bool)

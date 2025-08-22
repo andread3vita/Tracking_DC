@@ -1,0 +1,14 @@
+executable    = src/run_sequence_global.sh
+            output        = std/condor.$(ClusterId).$(ProcId).out
+            error         = std/condor.$(ClusterId).$(ProcId).err
+            log           = std/condor.$(ClusterId).log
+
+            +AccountingGroup = "group_u_FCC.local_gen"
+            +JobFlavour      = "testmatch"
+            
+            RequestCpus = 3
+            arguments = $(ARGS)
+            queue ARGS from (
+            /eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset Pythia Zcard 3 1 2
+/eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset Pythia Zcard 3 1 4
+)

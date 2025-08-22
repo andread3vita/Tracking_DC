@@ -35,8 +35,8 @@ from src.layers.batch_operations import obtain_batch_numbers
 from xformers.ops.fmha import BlockDiagonalMask
 import os
 import wandb
-# from src.gatr.primitives.linear import _compute_pin_equi_linear_basis
-# from src.gatr.primitives.attention import _build_dist_basis
+from src.gatr_v111.primitives.linear import _compute_pin_equi_linear_basis
+from src.gatr_v111.primitives.attention import _build_dist_basis
 
 
 class ExampleWrapper(L.LightningModule):  # nn.Module L.LightningModule
@@ -51,14 +51,15 @@ class ExampleWrapper(L.LightningModule):  # nn.Module L.LightningModule
         self.input_dim = 3
         self.output_dim = 4
         self.args = args
-        # self.basis_gp = None
-        # self.basis_outer = None
-        # self.pin_basis = None
-        # self.basis_q = None
-        # self.basis_k = None
+        self.basis_gp = None
+        self.basis_outer = None
+        self.pin_basis = None
+        self.basis_q = None
+        self.basis_k = None
         self.ScaledGooeyBatchNorm2_1 = nn.BatchNorm1d(self.input_dim, momentum=0.1)
 
-        # self.load_basis()
+
+        self.load_basis()
         self.gatr = GATr(
             in_mv_channels=1,
             out_mv_channels=1,
@@ -69,36 +70,40 @@ class ExampleWrapper(L.LightningModule):  # nn.Module L.LightningModule
             num_blocks=blocks,
             attention=SelfAttentionConfig(),
             mlp=MLPConfig(),
-            # basis_gp=self.basis_gp,
-            # basis_outer=self.basis_outer,
-            # basis_pin=self.pin_basis,
-            # basis_q=self.basis_q,
-            # basis_k=self.basis_k,
+            basis_gp=self.basis_gp,
+            basis_outer=self.basis_outer,
+            basis_pin=self.pin_basis,
+            basis_q=self.basis_q,
+            basis_k=self.basis_k,
         )
 
         self.clustering = nn.Linear(16, self.output_dim - 1, bias=False)
         self.beta = nn.Linear(16, 1)
         self.vector_like_data = True
 
-    # def load_basis(self):
+    def load_basis(self):
 
-    #     filename = "/afs/cern.ch/user/m/mgarciam/.local/lib/python3.8/site-packages/gatr/primitives/data/geometric_product.pt"
-    #     sparse_basis = torch.load(filename).to(torch.float32)
-    #     basis = sparse_basis.to_dense()
-    #     self.basis_gp = basis.to(device="cuda")
-    #     filename = "/afs/cern.ch/user/m/mgarciam/.local/lib/python3.8/site-packages/gatr/primitives/data/outer_product.pt"
-    #     sparse_basis_outer = torch.load(filename).to(torch.float32)
-    #     sparse_basis_outer = sparse_basis_outer.to_dense()
-    #     self.basis_outer = sparse_basis_outer.to(device="cuda")
+        filename = "/afs/cern.ch/work/a/adevita/public/gatr_utils/geometric_product.pt"
+        sparse_basis = torch.load(filename).to(torch.float32)
+        basis = sparse_basis.to_dense()
+        self.basis_gp = basis.to(device="cuda")
+        filename = "/afs/cern.ch/work/a/adevita/public/gatr_utils/outer_product.pt"
+        sparse_basis_outer = torch.load(filename).to(torch.float32)
+        sparse_basis_outer = sparse_basis_outer.to_dense()
+        self.basis_outer = sparse_basis_outer.to(device="cuda")
 
-    #     self.pin_basis = _compute_pin_equi_linear_basis(
-    #         device=self.basis_gp.device, dtype=basis.dtype
-    #     )
-    #     self.basis_q, self.basis_k = _build_dist_basis(
-    #         device=self.basis_gp.device, dtype=basis.dtype
-    #     )
+        self.pin_basis = _compute_pin_equi_linear_basis(
+            device=self.basis_gp.device, dtype=basis.dtype
+        )
+        self.basis_q, self.basis_k = _build_dist_basis(
+            device=self.basis_gp.device, dtype=basis.dtype
+        )
 
     def forward(self, g, input,type_run=""):  #
+        # print("forward")
+        pos_hits_xyz = input[:, 0:3]
+        hit_type = input[:, 3].view(-1, 1)
+        vector = input[:, 4:]
         
         inputs = g.ndata["pos_hits_xyz"]
 
@@ -114,10 +119,6 @@ class ExampleWrapper(L.LightningModule):  # nn.Module L.LightningModule
                 step_count=self.global_step,
             )
         
-        # print("forward")
-        pos_hits_xyz = input[:, 0:3]
-        hit_type = input[:, 3].view(-1, 1)
-        vector = input[:, 4:]
         inputs = self.ScaledGooeyBatchNorm2_1(pos_hits_xyz)
         velocities = embed_translation(vector)
         embedded_inputs = embed_point(inputs) + embed_scalar(hit_type) + velocities
@@ -130,6 +131,7 @@ class ExampleWrapper(L.LightningModule):  # nn.Module L.LightningModule
         output = embedded_outputs[:, 0, :]
         x_cluster_coord = self.clustering(output)
         beta = self.beta(output)
+        x = torch.cat((x_cluster_coord, beta), dim=1)
         
         g.ndata["final_cluster"] = x_cluster_coord
         g.ndata["beta"] = beta.view(-1)
@@ -142,8 +144,6 @@ class ExampleWrapper(L.LightningModule):  # nn.Module L.LightningModule
                 epoch=str(self.current_epoch) + type_run,
                 step_count=self.global_step,
             )
-            
-        x = torch.cat((x_cluster_coord, beta), dim=1)
 
         return x
 
@@ -217,7 +217,7 @@ class ExampleWrapper(L.LightningModule):  # nn.Module L.LightningModule
         hit_type = batch_g.ndata["hit_type"].view(-1, 1)
         vector = batch_g.ndata["vector"]
         input_ = torch.cat((pos_hits_xyz, hit_type, vector), dim=1)
-        model_output = self(batch_g, input_, type_run="_eval")
+        model_output = self(batch_g, input_)
         dic = {}
         batch_g.ndata["model_output"] = model_output
         dic["graph"] = batch_g
