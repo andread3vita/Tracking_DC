@@ -1,0 +1,26 @@
+mkdir: cannot create directory 'out_hepmc/': File exists
+ERROR::WriterAscii: could not open output file: out_hepmc/out_6.hepmc
+rm: cannot remove 'out_hepmc/out_6.hepmc': No such file or directory
+--2025-08-29 22:55:55--  https://fccsw.web.cern.ch/fccsw/filesForSimDigiReco/IDEA/DataAlgFORGEANT.root
+Resolving fccsw.web.cern.ch (fccsw.web.cern.ch)... 2001:1458:d00:61::100:1a4, 2001:1458:d00:17::100:9e, 2001:1458:d00:62::100:2e8, ...
+Connecting to fccsw.web.cern.ch (fccsw.web.cern.ch)|2001:1458:d00:61::100:1a4|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 108801 (106K)
+Saving to: 'DataAlgFORGEANT.root'
+
+     0K .......... .......... .......... .......... .......... 47% 19.3M 0s
+    50K .......... .......... .......... .......... .......... 94% 20.1M 0s
+   100K ......                                                100% 11.6T=0.005s
+
+2025-08-29 22:55:55 (20.9 MB/s) - 'DataAlgFORGEANT.root' saved [108801/108801]
+
+rm: cannot remove 'out_edm4hep/out_sim_edm4hep_6.root': No such file or directory
+Error in <TFile::TFile>: file /eos/experiment/fcc/users/a/adevita/idea_v3_o1_dataset/Pythia/temp/out_digi/output_IDEA_DIGI_6.root does not exist
+Traceback (most recent call last):
+  File "/afs/cern.ch/work/a/adevita/public/Tracking_DC_new/data_creation/data_processing/IDEAv3/process_tree_global.py", line 22, in <module>
+    reader = root_io.Reader(rootfile)
+  File "/cvmfs/sw-nightlies.hsf.org/key4hep/releases/2025-08-19/x86_64-almalinux9-gcc14.2.0-opt/podio/66ad12a900fca2561e12d00c0ca04616b92c955e_develop-3srkrj/lib/python3.13/site-packages/podio/root_io.py", line 25, in __init__
+    self._reader.openFiles(filenames)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+cppyy.gbl.std.runtime_error: void podio::ROOTReader::openFiles(const vector<string>& filenames) =>
+    runtime_error: File out_digi/output_IDEA_DIGI_6.root couldn't be found or the "podio_metadata" tree couldn't be read.

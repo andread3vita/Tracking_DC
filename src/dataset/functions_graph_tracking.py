@@ -496,7 +496,7 @@ def remove_loopers(hit_particle_link, y, coord, cluster_id):
     
     mask_x = diff_x > 1600
     mask_z = diff_z > 2800
-    mask_y = diff_y > 1600. ####### 1600?
+    mask_y = diff_y > 1600 ####### 1600?
     
     mask_p = mask_x + mask_z + mask_y
     # remove particles with a couple hits

@@ -128,6 +128,8 @@ def main():
             strategy="ddp",
             # limit_train_batches=20,
             # limit_train_batches=890,
+            # gradient_clip_val=1.0,
+            accumulate_grad_batches=2,
             limit_val_batches=5,
         )
         args.local_rank = trainer.global_rank

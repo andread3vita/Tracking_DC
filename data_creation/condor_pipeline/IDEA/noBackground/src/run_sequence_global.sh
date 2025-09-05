@@ -68,9 +68,11 @@ if [[ "${TYPE}" == "Pythia" ]]
                   --numberOfEvents $NEV \
                   --random.seed $SEED \
                   --steeringFile  $K4RECTRACKER_dir/SteeringFile_IDEA_o${OPTION}_v0${VERSION}.py \
-                  --part.minimalKineticEnergy "0.1*MeV"
+                  --part.minimalKineticEnergy "0.01*MeV"
                   # --part.userParticleHandler='' \
                   # --part.keepAllParticles true
+                 
+                  
                   
                   
       else
@@ -81,7 +83,7 @@ if [[ "${TYPE}" == "Pythia" ]]
                   --random.seed $SEED \
                   --part.keepAllParticles true \
                   --part.userParticleHandler=''
-                  # --part.minimalKineticEnergy "0.001*MeV"
+                  # --part.minimalKineticEnergy "0.1*MeV"
       fi
       rm out_hepmc/out_${SEED}.hepmc
 
@@ -90,7 +92,7 @@ if [[ "${TYPE}" == "Pythia" ]]
       rm out_edm4hep/out_sim_edm4hep_${SEED}.root
 
       mkdir -p ${FULLOUTDIR}
-      python $PFDIR/data_creation/data_processing/IDEAv${VERSION}/process_tree_global.py out_digi/output_IDEA_DIGI_${SEED}.root ${FULLOUTDIR}/${CONFIG}_graphs_${SEED}.root False #${DETECTOR} 
+      python $PFDIR/data_creation/data_processing/IDEAv${VERSION}/process_tree_global.py out_digi/output_IDEA_DIGI_${SEED}.root ${FULLOUTDIR}/${CONFIG}_graphs_${SEED}.root False
       # rm out_digi/output_IDEA_DIGI_${SEED}.root
 
 fi

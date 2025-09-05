@@ -41,8 +41,9 @@ def object_condensation_loss_tracking(
 
     len_batch = len(batch.batch_num_nodes())
     batch_numbers = torch.repeat_interleave(
-        torch.range(0, len_batch - 1).to(dev), batch.batch_num_nodes()
-    ).to(dev)
+        torch.arange(len_batch, device=dev),  # [0, 1, 2, ..., len_batch-1]
+        batch.batch_num_nodes(),              # number of nodes per graph
+    )
 
     a = calc_LV_Lbeta(
         original_coords,

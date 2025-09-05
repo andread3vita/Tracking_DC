@@ -106,7 +106,8 @@ class ExampleWrapper(L.LightningModule):  # nn.Module L.LightningModule
         vector = input[:, 4:]
         
         inputs = g.ndata["pos_hits_xyz"]
-
+        
+        # print("Global step:",self.global_step)
         if self.trainer.is_global_zero and self.global_step % 1000 == 0:
             g.ndata["original_coords"] = g.ndata["pos_hits_xyz"]
             PlotCoordinates(
