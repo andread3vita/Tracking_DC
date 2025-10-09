@@ -17,8 +17,6 @@ The second type (`TrackerHitPlane`) is handled by the function [`store_hit_col_V
 Both functions are used inside the script:  
 [`process_tree_global.py`](data_creation/data_processing/IDEAv3/process_tree_global.py)
 
----
-
 ### 👨‍💻 What You Need to Do
 
 To adapt the data creation for your use case:
@@ -27,10 +25,9 @@ To adapt the data creation for your use case:
 2. Integrate them into `process_tree_global.py`.
 3. Run the script to convert your input files into `.root` files, where each event is stored as a `TTree`.
 
-
 # How to train the model
 
-### 🚀 Environment Setup
+## 🚀 Environment Setup
 
 To begin, it's necessary to create a Python environment that supports both **GATr** and **Weights & Biases (wandb)**. We recommend using a Docker container for consistency and ease of setup.
 
@@ -45,11 +42,11 @@ pip install lightning
 pip install plotly
 ```
 
-# 🧠 Model Training
+## 🧠 Model Training
 
 To train the model, use the script [`src/train_lightning.py`](src/train_lightning.py). This script supports extensive configuration through command-line arguments, which are defined in [`src/utils/parser_args.py`](src/utils/parser_args.py).
 
-## 📌 Example Command
+### 📌 Example Command
 
 ```bash
 python -m src.train_lightning \
@@ -75,9 +72,28 @@ python -m src.train_lightning \
   --use-average-cc-pos 0.99
 ```
 
-## ✅ Recommended Configuration
+### ✅ Recommended Configuration
 
 - `--data-config`: `config_files/config_tracking_global_vector.yaml`  
 - `--network-config`: `src/models/wrapper/example_model_tracking_gatr_v_plot.py`
 
 These provide a reliable starting point for training the GATr model effectively.
+
+# How to convert the model into ONNX
+
+To run inference in C++, the `.ckpt` file may need to be converted into an `.onnx` file.  
+This can be done by following these steps:
+
+0. **Prerequisite**: ensure that **Apptainer** is installed.  
+1. **Pull the container image**:  
+   `singularity pull docker://justdrew/onnxconversion`
+2. **Run the container**:  
+   `apptainer shell onnxconversion_latest.sif`  
+   > **Note:** Make sure the container has access to both the conversion script  
+   > (`Tracking_DC/scripts/onnx_conversion.py`) and the `.ckpt` file.  
+3. **Run the conversion script**:  
+   ```bash
+   python scripts/onnx_conversion.py \
+       --weightpath <PATH_TO_CKPT_FILE> \
+       --outputpath <PATH_WHERE_TO_SAVE_THE_ONNX_FILE>
+   ```
